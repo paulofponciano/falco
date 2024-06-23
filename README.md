@@ -23,6 +23,11 @@ helm upgrade --install falco -n falco --create-namespace falcosecurity/falco \
   --set falcosidekick.config.loki.minimumpriority=notice \
   --set falcosidekick.config.customfields="source:falco"
 ```
+```sh
+kubectl apply -f istio-ingress-falcosidekick.yaml
+```
+
+![Falcosidekick_ui](./img/Falcosidekick_ui.png)
 
 ### Falco logs
 

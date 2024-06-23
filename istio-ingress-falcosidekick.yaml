@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: falcosidekick-gateway
+  namespace: falco
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - hosts:
+        - falco.pauloponciano.digital
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: falcosidekick
+  namespace: falco
+spec:
+  gateways:
+    - falcosidekick-gateway
+  hosts:
+    - falco.pauloponciano.digital
+  http:
+    - route:
+        - destination:
+            host: falco-falcosidekick-ui.falco.svc.cluster.local
+            port:
+              number: 2802
+          weight: 100
