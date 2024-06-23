@@ -6,6 +6,12 @@
 
 ### Deploy with Helm
 
+- Falco
+- Falcosidekick exporting to Loki
+
+> [!NOTE]
+> Loki's setup using S3 for storage can be found at [o11y: OpenTelemetry, Prometheus, Loki e Tempo no EKS [Lab Session]](https://dev.to/aws-builders/o11y-opentelemetry-prometheus-loki-e-tempo-no-eks-lab-session-2o4b).
+
 ```sh
 helm upgrade --install falco -n falco --create-namespace falcosecurity/falco \
   --set driver.kind=ebpf \
@@ -36,4 +42,6 @@ kubectl run alpine --image alpine -- sh -c "sleep infinity"
 kubectl exec -it alpine -- sh -c "uptime"
 ```
 
+![Grafana_Loki](./img/Loki.png)
 
+---
