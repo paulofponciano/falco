@@ -45,3 +45,7 @@ kubectl exec -it alpine -- sh -c "uptime"
 ![Grafana_Loki](./img/Loki.png)
 
 ---
+
+Official repo: https://github.com/falcosecurity/falco
+
+---
